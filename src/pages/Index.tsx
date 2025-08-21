@@ -93,83 +93,70 @@ const Index = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="pt-24 pb-16 gradient-hero relative overflow-hidden">
-        <Spotlight
-          className="-top-40 left-0 md:-top-20 md:left-60"
-          fill="white"
-        />
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-white/10 animate-float"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-white/10 animate-float" style={{animationDelay: '1s'}}></div>
-          <div className="absolute bottom-20 left-1/3 w-40 h-40 rounded-full bg-white/10 animate-float" style={{animationDelay: '2s'}}></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={heroInView ? "visible" : "hidden"}
-            className="grid lg:grid-cols-2 gap-12 items-center"
-          >
-            <div className="text-left">
-              <motion.h1 
-                variants={itemVariants}
-                className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-              >
-                Easily hire contractors 
-                <span className="block text-yellow-300">compliantly</span>
-                <span className="block">in 150+ countries</span>
-              </motion.h1>
-              
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-white/90 mb-8 leading-relaxed"
-              >
-                Streamline global contractor payments, ensure compliance, and focus on growing your business while we handle the complexity.
-              </motion.p>
-              
-              <motion.div 
-                variants={itemVariants}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Button 
-                  size="lg" 
-                  className="bg-white text-primary hover:bg-white/90 shadow-glow transition-smooth text-lg px-8"
-                >
-                  Start hiring today
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white/10 transition-smooth text-lg px-8"
-                >
-                  See how it works
-                </Button>
-              </motion.div>
-            </div>
-            
-            <motion.div 
-              variants={itemVariants}
-              className="relative"
-            >
-              <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-2 border border-white/20 shadow-card overflow-hidden">
-                <div className="aspect-video rounded-2xl overflow-hidden relative">
-                  <img 
-                    src={heroTeamImage} 
-                    alt="Professional team collaborating on global contractor management"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <div className="text-lg font-semibold">Global Team Collaboration</div>
-                    <div className="text-sm opacity-90">150+ Countries Connected</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <section className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background Spotlight */}
+      <Spotlight className="absolute -top-20 left-0 md:left-1/2 md:-translate-x-1/2 w-[800px] h-[800px] opacity-40" />
+      
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        {/* Left Content */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-left"
+        >
+          <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            Hire contractors{" "}
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              globally
+            </span>{" "}
+            in minutes
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground max-w-xl">
+            Pay and manage contractors in <strong>150+ countries</strong> with full compliance, tax coverage, and local law assurance — without setting up entities.
+          </p>
+
+          {/* CTA Row */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <Button size="lg" className="gradient-primary text-white px-8">
+              Get Started
+            </Button>
+            <Button size="lg" variant="outline" className="px-8">
+              See Demo
+            </Button>
+          </div>
+
+          {/* Compliance Badges */}
+          <Card className="mt-8 p-4 flex items-center gap-3 flex-wrap bg-white/5 backdrop-blur-md border-white/10">
+            <Badge variant="secondary">SOC 2 Compliant</Badge>
+            <Badge variant="secondary">GDPR Ready</Badge>
+            <Badge variant="secondary">IRS Approved</Badge>
+          </Card>
+        </motion.div>
+
+        {/* Right Visual */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div className="rounded-3xl shadow-2xl border border-white/20 overflow-hidden backdrop-blur-md">
+            <img 
+              src={dashboardImage} 
+              alt="Global contractor payments dashboard"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Floating Element */}
+          <div className="absolute -top-6 -right-6">
+            <Badge className="bg-green-500/90 text-white shadow-lg px-4 py-2 text-sm">
+              150+ Countries
+            </Badge>
+          </div>
+        </motion.div>
+      </div>
+    </section>
 
       {/* Quick Stats */}
       <section ref={statsRef} className="py-16 bg-white">
