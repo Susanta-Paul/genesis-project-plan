@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Spotlight } from "@/components/ui/spotlight";
 import { 
   Globe, 
   Shield, 
@@ -93,6 +94,10 @@ const Index = () => {
 
       {/* Hero Section */}
       <section ref={heroRef} className="pt-24 pb-16 gradient-hero relative overflow-hidden">
+        <Spotlight
+          className="-top-40 left-0 md:-top-20 md:left-60"
+          fill="white"
+        />
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-white/10 animate-float"></div>
           <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-white/10 animate-float" style={{animationDelay: '1s'}}></div>
