@@ -1,10 +1,11 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Spotlight } from "@/components/ui/spotlight";
 import Tilt from "react-parallax-tilt";
+import CountUp from 'react-countup';
 import { 
   Globe, 
   Shield, 
@@ -63,6 +64,15 @@ const Index = () => {
     }
   };
 
+  const [startCount, setStartCount] = useState(false);
+  const accentFrom = "from-blue-500";
+  const accentTo = "to-blue-600";
+
+  // Trigger count-up only when section is in view
+  useEffect(() => {
+    if (statsInView) setStartCount(true);
+  }, [statsInView]);
+
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Navigation */}
@@ -103,56 +113,37 @@ const Index = () => {
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M583.273 1008.67L170.702 918.97L0 392.227L622.544 0L1108.42 509.573L583.273 1008.67Z"></path>
+          <path d="M583.273 1008.67L170.702 918.97L0 392.227L622.544 0L1108.42 509.573L583.273 1008.67Z" />
         </svg>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 lg:px-6 pt-24 pb-24 lg:grid lg:grid-cols-2 lg:gap-6">
-        
         {/* Left Content */}
         <motion.div
           className="max-w-xl lg:pt-16 z-20"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <motion.p
-            className="text-base font-semibold text-gray-800 mb-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
+          <p className="text-base font-semibold text-gray-800 mb-3">
             Contractor Pay
-          </motion.p>
+          </p>
 
-          <motion.h1
-            className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
+          <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900">
             Easily hire contractors compliantly worldwide
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="mt-6 text-lg text-gray-600"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
+          <p className="mt-6 text-lg text-gray-600">
             Hire and manage international contractors seamlessly. Our platform automates HR, ensures compliance, and guarantees on-time payments — all with unmatched flexibility.
-          </motion.p>
+          </p>
 
           {/* CTA Row */}
           <motion.div
             className="mt-8 flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <Button
@@ -172,47 +163,36 @@ const Index = () => {
         </motion.div>
 
         {/* Right Images */}
-        <motion.div
-          className="relative w-full mt-12 lg:mt-0 flex justify-center lg:justify-end z-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
+        <div className="relative w-full mt-12 lg:mt-0 flex justify-center lg:justify-end z-10">
           <div className="relative w-full max-w-[900px]">
-            
             {/* Large Image with Tilt */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
+            <Tilt
+              tiltMaxAngleX={15}
+              tiltMaxAngleY={15}
+              perspective={1200}
+              scale={1.05}
+              transitionSpeed={400}
+              glareEnable={false}
               className="overflow-hidden rounded-3xl shadow-xl h-[600px]"
             >
-              <Tilt
-                tiltMaxAngleX={10}
-                tiltMaxAngleY={10}
-                perspective={1200}
-                scale={1.05}
-                transitionSpeed={400}
-                glareEnable={false}
-                className="w-full h-full"
-              >
-                <img
-                  src="https://images.ctfassets.net/pdf29us7flmy/7rUlJ13ZQSZTwrGC9eZJrV/143bed1e9db7ccf98001d0ca8a90d91e/GettyImages-517047052_optimized.jpg?w=720&q=100&fm=jpg"
-                  alt="Contractor dashboard"
-                  className="w-full h-full object-cover rounded-3xl"
-                />
-              </Tilt>
-            </motion.div>
+              <motion.img
+                src="https://images.ctfassets.net/pdf29us7flmy/7rUlJ13ZQSZTwrGC9eZJrV/143bed1e9db7ccf98001d0ca8a90d91e/GettyImages-517047052_optimized.jpg?w=720&q=100&fm=jpg"
+                alt="Contractor dashboard"
+                className="w-full h-full object-cover rounded-3xl"
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              />
+            </Tilt>
 
-            {/* Small Image at Bottom-Left */}
+            {/* Small Image at Bottom-Left with subtle motion */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
               className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4 w-1/2 lg:w-2/5 overflow-hidden rounded-3xl shadow-2xl"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
             >
               <img
                 src="https://www.d-velop.com/blog/wp-content/uploads/2020/07/header-contract-management-process-scaled-1-1568x1046.jpg"
@@ -220,41 +200,112 @@ const Index = () => {
                 className="w-full h-auto object-cover rounded-3xl shadow-lg"
               />
             </motion.div>
-
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
 
 
       {/* Quick Stats */}
-      <section ref={statsRef} className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section ref={statsRef} className="py-20 bg-gray-50 relative overflow-hidden">
+      {/* Section Heading */}
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold text-gray-900">Our Impact</h2>
+        <p className="text-gray-600 mt-3 text-lg max-w-xl mx-auto">
+          Supporting contractors and businesses worldwide with reliability and trust.
+        </p>
+      </div>
+
+      {/* Subtle background shapes */}
+      <div className="absolute -top-32 -left-32 w-72 h-72 bg-blue-200 rounded-full opacity-10 blur-3xl"></div>
+      <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-blue-100 rounded-full opacity-10 blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+
+          {/* Countries */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={statsInView ? "visible" : "hidden"}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={statsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
           >
-            {[
-              { number: "150+", label: "Countries supported", icon: Globe },
-              { number: "99.9%", label: "Compliance rate", icon: Shield },
-              { number: "10k+", label: "Active contractors", icon: Users },
-              { number: "24/7", label: "Support available", icon: Clock }
-            ].map((stat, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="p-6 text-center shadow-card hover:shadow-primary transition-smooth group">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full gradient-primary flex items-center justify-center group-hover:animate-pulse-glow">
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold text-gradient mb-2">{stat.number}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </Card>
+            <Card className="p-8 text-center shadow-md rounded-2xl bg-white hover:shadow-lg transition-shadow duration-300">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className={`w-14 h-14 mx-auto mb-5 rounded-full bg-gradient-to-r ${accentFrom} ${accentTo} flex items-center justify-center text-white shadow-sm`}
+              >
+                <Globe className="w-6 h-6" />
               </motion.div>
-            ))}
+              <div className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${accentFrom} ${accentTo} mb-2`}>
+                {startCount && <CountUp end={150} duration={2} suffix="+" />}
+              </div>
+              <div className="text-gray-700 font-medium">Countries supported</div>
+            </Card>
           </motion.div>
+
+          {/* Compliance */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={statsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Card className="p-8 text-center shadow-md rounded-2xl bg-white hover:shadow-lg transition-shadow duration-300">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className={`w-14 h-14 mx-auto mb-5 rounded-full bg-gradient-to-r ${accentFrom} ${accentTo} flex items-center justify-center text-white shadow-sm`}
+              >
+                <Shield className="w-6 h-6" />
+              </motion.div>
+              <div className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${accentFrom} ${accentTo} mb-2`}>
+                {startCount && <CountUp end={99.9} duration={2} suffix="%" />}
+              </div>
+              <div className="text-gray-700 font-medium">Compliance rate</div>
+            </Card>
+          </motion.div>
+
+          {/* Active Contractors */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={statsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Card className="p-8 text-center shadow-md rounded-2xl bg-white hover:shadow-lg transition-shadow duration-300">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className={`w-14 h-14 mx-auto mb-5 rounded-full bg-gradient-to-r ${accentFrom} ${accentTo} flex items-center justify-center text-white shadow-sm`}
+              >
+                <Users className="w-6 h-6" />
+              </motion.div>
+              <div className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${accentFrom} ${accentTo} mb-2`}>
+                {startCount && <CountUp end={10000} duration={2} suffix="+" />}
+              </div>
+              <div className="text-gray-700 font-medium">Active contractors</div>
+            </Card>
+          </motion.div>
+
+          {/* Support */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={statsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <Card className="p-8 text-center shadow-md rounded-2xl bg-white hover:shadow-lg transition-shadow duration-300">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className={`w-14 h-14 mx-auto mb-5 rounded-full bg-gradient-to-r ${accentFrom} ${accentTo} flex items-center justify-center text-white shadow-sm`}
+              >
+                <Clock className="w-6 h-6" />
+              </motion.div>
+              <div className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${accentFrom} ${accentTo} mb-2`}>
+                {startCount && <CountUp end={24} duration={2} suffix="/7" />}
+              </div>
+              <div className="text-gray-700 font-medium">Support available</div>
+            </Card>
+          </motion.div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Features Section */}
       <section id="features" ref={featuresRef} className="py-20 gradient-subtle">
