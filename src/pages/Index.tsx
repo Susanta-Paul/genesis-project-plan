@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Spotlight } from "@/components/ui/spotlight";
+import Tilt from "react-parallax-tilt";
 import { 
   Globe, 
   Shield, 
@@ -93,70 +94,138 @@ const Index = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-      {/* Background Spotlight */}
-      <Spotlight className="absolute -top-20 left-0 md:left-1/2 md:-translate-x-1/2 w-[800px] h-[800px] opacity-40" />
-      
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left Content */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-left"
+      <section className="relative bg-[#f0f7ff] overflow-hidden">
+      {/* Background shape */}
+      <div className="absolute right-0 inset-y-0 w-1/2">
+        <svg
+          className="absolute top-0 right-0 w-[950px] h-[950px] text-blue-100"
+          viewBox="0 0 1109 1009"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-            Hire contractors{" "}
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              globally
-            </span>{" "}
-            in minutes
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-            Pay and manage contractors in <strong>150+ countries</strong> with full compliance, tax coverage, and local law assurance — without setting up entities.
-          </p>
+          <path d="M583.273 1008.67L170.702 918.97L0 392.227L622.544 0L1108.42 509.573L583.273 1008.67Z"></path>
+        </svg>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 lg:px-6 pt-24 pb-24 lg:grid lg:grid-cols-2 lg:gap-6">
+        
+        {/* Left Content */}
+        <motion.div
+          className="max-w-xl lg:pt-16 z-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.p
+            className="text-base font-semibold text-gray-800 mb-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Contractor Pay
+          </motion.p>
+
+          <motion.h1
+            className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Easily hire contractors compliantly worldwide
+          </motion.h1>
+
+          <motion.p
+            className="mt-6 text-lg text-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Hire and manage international contractors seamlessly. Our platform automates HR, ensures compliance, and guarantees on-time payments — all with unmatched flexibility.
+          </motion.p>
 
           {/* CTA Row */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="gradient-primary text-white px-8">
-              Get Started
+          <motion.div
+            className="mt-8 flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Button
+              size="lg"
+              className="bg-[#0052cc] hover:bg-[#0041a8] text-white px-8 py-6 text-base font-medium"
+            >
+              Get a free 30-min demo
             </Button>
-            <Button size="lg" variant="outline" className="px-8">
-              See Demo
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-8 py-6 text-base font-medium border-gray-300 text-gray-700 hover:bg-gray-100"
+            >
+              Speak to sales
             </Button>
-          </div>
-
-          {/* Compliance Badges */}
-          <Card className="mt-8 p-4 flex items-center gap-3 flex-wrap bg-white/5 backdrop-blur-md border-white/10">
-            <Badge variant="secondary">SOC 2 Compliant</Badge>
-            <Badge variant="secondary">GDPR Ready</Badge>
-            <Badge variant="secondary">IRS Approved</Badge>
-          </Card>
+          </motion.div>
         </motion.div>
 
-        {/* Right Visual */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative"
+        {/* Right Images */}
+        <motion.div
+          className="relative w-full mt-12 lg:mt-0 flex justify-center lg:justify-end z-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
-          <div className="rounded-3xl shadow-2xl border border-white/20 overflow-hidden backdrop-blur-md">
-            <img 
-              src={dashboardImage} 
-              alt="Global contractor payments dashboard"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          {/* Floating Element */}
-          <div className="absolute -top-6 -right-6">
-            <Badge className="bg-green-500/90 text-white shadow-lg px-4 py-2 text-sm">
-              150+ Countries
-            </Badge>
+          <div className="relative w-full max-w-[900px]">
+            
+            {/* Large Image with Tilt */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="overflow-hidden rounded-3xl shadow-xl h-[600px]"
+            >
+              <Tilt
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                perspective={1200}
+                scale={1.05}
+                transitionSpeed={400}
+                glareEnable={false}
+                className="w-full h-full"
+              >
+                <img
+                  src="https://images.ctfassets.net/pdf29us7flmy/7rUlJ13ZQSZTwrGC9eZJrV/143bed1e9db7ccf98001d0ca8a90d91e/GettyImages-517047052_optimized.jpg?w=720&q=100&fm=jpg"
+                  alt="Contractor dashboard"
+                  className="w-full h-full object-cover rounded-3xl"
+                />
+              </Tilt>
+            </motion.div>
+
+            {/* Small Image at Bottom-Left */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4 w-1/2 lg:w-2/5 overflow-hidden rounded-3xl shadow-2xl"
+            >
+              <img
+                src="https://www.d-velop.com/blog/wp-content/uploads/2020/07/header-contract-management-process-scaled-1-1568x1046.jpg"
+                alt="Contractor workflow"
+                className="w-full h-auto object-cover rounded-3xl shadow-lg"
+              />
+            </motion.div>
+
           </div>
         </motion.div>
       </div>
     </section>
+
 
       {/* Quick Stats */}
       <section ref={statsRef} className="py-16 bg-white">
