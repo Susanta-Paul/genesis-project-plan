@@ -353,94 +353,103 @@ const Index = () => {
 
       {/* Features Section */}
       <section id="compliance-features" className="py-20 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center h-screen">
-    {/* Left Content */}
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      viewport={{ once: true, margin: "-100px" }}
-      className="space-y-8 lg:space-y-12"
-    >
-      <p className="text-gray-600 font-semibold uppercase tracking-wide">Compliance</p>
-      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-snug">
-        Global contractor hiring made easy with automated compliance
-      </h2>
-      <p className="text-lg lg:text-xl text-gray-700 max-w-lg">
-        Our platform ensures you're always compliant while making contractor 
-        payments seamless across the globe. Stay ahead with automatic updates, 
-        compliant onboarding, and real-time alerts.
-      </p>
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center h-screen">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="space-y-8 lg:space-y-12"
+          >
+            <p className="text-gray-600 font-semibold uppercase tracking-wide">Compliance</p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-snug">
+              Global contractor hiring made easy with automated compliance
+            </h2>
+            <p className="text-lg lg:text-xl text-gray-700 max-w-lg">
+              Our platform ensures you're always compliant while making contractor 
+              payments seamless across the globe. Stay ahead with automatic updates, 
+              compliant onboarding, and real-time alerts.
+            </p>
 
-      {/* Stats */}
-      <div className="flex gap-12 mt-6">
-        <div className="pr-4">
-          <p className="text-3xl lg:text-4xl font-bold text-gray-900">25%</p>
-          <p className="text-sm lg:text-base text-gray-600">Reduction in HR workload</p>
+            {/* Stats */}
+            <div className="flex gap-12 mt-6">
+              <div className="pr-4">
+                <p className="text-3xl lg:text-4xl font-bold text-gray-900">25%</p>
+                <p className="text-sm lg:text-base text-gray-600">Reduction in HR workload</p>
+              </div>
+              <div className="pr-4">
+                <p className="text-3xl lg:text-4xl font-bold text-gray-900">80%</p>
+                <p className="text-sm lg:text-base text-gray-600">Time saved on admin</p>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <Button size="lg" className="mt-6 lg:mt-8 bg-blue-600 hover:bg-blue-700 text-white">
+                Book a Demo
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="relative w-full lg:w-[110%] -translate-x-4 h-full flex items-center"
+          >
+            <img
+              src="https://images.pexels.com/photos/7792863/pexels-photo-7792863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Contractor compliance illustration"
+              className="rounded-2xl shadow-xl object-cover w-full h-full scale-105 hover:scale-110 transition-transform duration-700"
+            />
+          </motion.div>
         </div>
-        <div className="pr-4">
-          <p className="text-3xl lg:text-4xl font-bold text-gray-900">80%</p>
-          <p className="text-sm lg:text-base text-gray-600">Time saved on admin</p>
+
+        {/* Feature Grid */}
+        <div className="mt-20 bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+              >
+                <Card className="p-8 h-full flex flex-col justify-between rounded-xl bg-gray-100 shadow-sm hover:shadow-lg transition-transform duration-300 transform hover:-translate-y-2 group">
+                  {/* Text Section */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 transition-colors duration-300 group-hover:text-gray-800">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  {/* Image Section */}
+                  <div className="mt-6 overflow-hidden rounded-lg">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <Button size="lg" className="mt-6 lg:mt-8 bg-blue-600 hover:bg-blue-700 text-white">
-          Book a Demo
-        </Button>
-      </motion.div>
-    </motion.div>
-
-    {/* Right Image */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true, margin: "-100px" }}
-      className="relative w-full lg:w-[110%] -translate-x-4 h-full flex items-center"
-    >
-      <img
-        src="https://images.pexels.com/photos/7792863/pexels-photo-7792863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        alt="Contractor compliance illustration"
-        className="rounded-2xl shadow-xl object-cover w-full h-full scale-105 hover:scale-110 transition-transform duration-700"
-      />
-    </motion.div>
-  </div>
-
-  {/* Feature Grid */}
-  <div className="mt-20 max-w-7xl mx-auto px-6">
-    <div className="grid lg:grid-cols-3 gap-8">
-      {features.map((feature, index) => (
-        <motion.div key={index} /* animations */>
-          <Card className="p-0 h-full shadow-md hover:shadow-lg transition-smooth group overflow-hidden">
-            <div className="aspect-video relative overflow-hidden">
-              <img src={feature.image} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-smooth"/>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              <div className="absolute top-4 left-4">
-                <div className="w-12 h-12 rounded-xl bg-gray-800/80 flex items-center justify-center">
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <Badge variant="secondary" className="bg-white/80 text-gray-800 mb-2">{feature.stats}</Badge>
-              </div>
-            </div>
-            <div className="p-8">
-              <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-              <p className="text-gray-700">{feature.description}</p>
-            </div>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
