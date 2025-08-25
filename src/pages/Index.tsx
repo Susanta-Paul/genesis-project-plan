@@ -52,7 +52,7 @@ const Index = () => {
       }
     }
   };
-
+  
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -63,6 +63,35 @@ const Index = () => {
       }
     }
   };
+  
+    const digitalContractsImage = "https://www.anitian.com/wp-content/uploads/2019/05/What-is-Compliance-Automation-Anitian.png?w=900"
+    const globalNetworkImage = "https://www.itedgenews.africa/wp-content/uploads/2021/12/seamless-payment.jpg"
+    const womanWorkingImage = "https://www.builtintelligence.com/cdn/shop/articles/Contract_Management_Software_c01187db-8a41-4a48-9e25-fd4ee32cdbc1.jpg?v=1747830744"
+  
+  const features = [
+  {
+    icon: Shield,
+    title: "Automated Compliance",
+    description: "Stay compliant with local tax laws and regulations in 150+ countries automatically.",
+    stats: "99.9% compliance rate",
+    image: digitalContractsImage,
+  },
+  {
+    icon: DollarSign,
+    title: "Seamless Payments",
+    description: "Pay contractors in their preferred currency with competitive exchange rates.",
+    stats: "50+ currencies",
+    image: globalNetworkImage,
+  },
+  {
+    icon: FileText,
+    title: "Contract Management",
+    description: "Create, manage, and store contracts with built-in legal templates.",
+    stats: "Legal templates included",
+    image: womanWorkingImage,
+  },
+];
+
 
   const [startCount, setStartCount] = useState(false);
   const accentFrom = "from-blue-500";
@@ -102,6 +131,11 @@ const Index = () => {
           </div>
         </div>
       </motion.nav>
+
+
+
+
+
 
       {/* Hero Section */}
       <section className="relative bg-[#f0f7ff] overflow-hidden">
@@ -206,6 +240,11 @@ const Index = () => {
     </section>
 
 
+
+
+
+
+
       {/* Quick Stats */}
       <section ref={statsRef} className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Section Heading */}
@@ -307,82 +346,103 @@ const Index = () => {
       </div>
     </section>
 
-      {/* Features Section */}
-      <section id="features" ref={featuresRef} className="py-20 gradient-subtle">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={featuresInView ? "visible" : "hidden"}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={itemVariants} className="text-4xl lg:text-5xl font-bold text-gradient mb-6">
-              Global contractor hiring made easy with automated compliance
-            </motion.h2>
-            <motion.p variants={itemVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our platform ensures you're always compliant while making contractor payments seamless across the globe.
-            </motion.p>
-          </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={featuresInView ? "visible" : "hidden"}
-            className="grid lg:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                icon: Shield,
-                title: "Automated Compliance",
-                description: "Stay compliant with local tax laws and regulations in 150+ countries automatically.",
-                stats: "99.9% compliance rate",
-                image: digitalContractsImage
-              },
-              {
-                icon: DollarSign,
-                title: "Seamless Payments",
-                description: "Pay contractors in their preferred currency with competitive exchange rates.",
-                stats: "50+ currencies",
-                image: globalNetworkImage
-              },
-              {
-                icon: FileText,
-                title: "Contract Management",
-                description: "Create, manage, and store contracts with built-in legal templates.",
-                stats: "Legal templates included",
-                image: womanWorkingImage
-              }
-            ].map((feature, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="p-0 h-full shadow-card hover:shadow-primary transition-smooth group overflow-hidden">
-                  <div className="aspect-video relative overflow-hidden">
-                    <img 
-                      src={feature.image} 
-                      alt={`${feature.title} visualization`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute top-4 left-4">
-                      <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center group-hover:animate-pulse-glow">
-                        <feature.icon className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <Badge variant="secondary" className="bg-white/90 text-foreground mb-2">
-                        {feature.stats}
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+
+
+    
+
+      {/* Features Section */}
+      <section id="compliance-features" className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center h-screen">
+    {/* Left Content */}
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="space-y-8 lg:space-y-12"
+    >
+      <p className="text-gray-600 font-semibold uppercase tracking-wide">Compliance</p>
+      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-snug">
+        Global contractor hiring made easy with automated compliance
+      </h2>
+      <p className="text-lg lg:text-xl text-gray-700 max-w-lg">
+        Our platform ensures you're always compliant while making contractor 
+        payments seamless across the globe. Stay ahead with automatic updates, 
+        compliant onboarding, and real-time alerts.
+      </p>
+
+      {/* Stats */}
+      <div className="flex gap-12 mt-6">
+        <div className="pr-4">
+          <p className="text-3xl lg:text-4xl font-bold text-gray-900">25%</p>
+          <p className="text-sm lg:text-base text-gray-600">Reduction in HR workload</p>
         </div>
-      </section>
+        <div className="pr-4">
+          <p className="text-3xl lg:text-4xl font-bold text-gray-900">80%</p>
+          <p className="text-sm lg:text-base text-gray-600">Time saved on admin</p>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <Button size="lg" className="mt-6 lg:mt-8 bg-blue-600 hover:bg-blue-700 text-white">
+          Book a Demo
+        </Button>
+      </motion.div>
+    </motion.div>
+
+    {/* Right Image */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="relative w-full lg:w-[110%] -translate-x-4 h-full flex items-center"
+    >
+      <img
+        src="https://images.pexels.com/photos/7792863/pexels-photo-7792863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="Contractor compliance illustration"
+        className="rounded-2xl shadow-xl object-cover w-full h-full scale-105 hover:scale-110 transition-transform duration-700"
+      />
+    </motion.div>
+  </div>
+
+  {/* Feature Grid */}
+  <div className="mt-20 max-w-7xl mx-auto px-6">
+    <div className="grid lg:grid-cols-3 gap-8">
+      {features.map((feature, index) => (
+        <motion.div key={index} /* animations */>
+          <Card className="p-0 h-full shadow-md hover:shadow-lg transition-smooth group overflow-hidden">
+            <div className="aspect-video relative overflow-hidden">
+              <img src={feature.image} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-smooth"/>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute top-4 left-4">
+                <div className="w-12 h-12 rounded-xl bg-gray-800/80 flex items-center justify-center">
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <Badge variant="secondary" className="bg-white/80 text-gray-800 mb-2">{feature.stats}</Badge>
+              </div>
+            </div>
+            <div className="p-8">
+              <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
+              <p className="text-gray-700">{feature.description}</p>
+            </div>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
       {/* Image Section with Stats */}
       <section className="py-20 bg-white">
