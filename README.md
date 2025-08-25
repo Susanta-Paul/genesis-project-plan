@@ -4,6 +4,8 @@
 
 **URL**: https://lovable.dev/projects/d717c1ef-e3fb-4dfe-b0c6-adca55bda356
 
+**Live Link**: https://preview--genesis-project-plan.lovable.app/
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
