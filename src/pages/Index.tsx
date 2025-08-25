@@ -128,7 +128,7 @@ const Index = () => {
   }, [statsInView]);
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen overflow-hidden bg-[#FFFBF4] ">
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
@@ -449,7 +449,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
               >
-                <Card className="p-8 h-full flex flex-col justify-between rounded-xl bg-gray-100 shadow-sm hover:shadow-lg transition-transform duration-300 transform hover:-translate-y-2 group">
+                <Card className="bg-[#FEF5E6] p-8 h-full flex flex-col justify-between rounded-xl shadow-sm hover:shadow-lg transition-transform duration-300 transform hover:-translate-y-2 group">
                   {/* Text Section */}
                   <div>
                     <h3 className="text-xl font-bold mb-3 text-gray-900 transition-colors duration-300 group-hover:text-gray-800">
@@ -474,14 +474,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </section>
-
-
-
-
-
-      {/* Testimonials */}
-    <section className="py-20 bg-gray-50">
     </section>
 
       {/* Benefits Section */}
