@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Spotlight } from "@/components/ui/spotlight";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Tilt from "react-parallax-tilt";
 import CountUp from 'react-countup';
 import { 
@@ -571,6 +572,72 @@ const Index = () => {
               </div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section ref={testimonialsRef} className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              What our customers say
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Join thousands of companies who trust us with their contractor payments and compliance
+            </p>
+          </motion.div>
+
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={testimonialsInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <Card className="p-8 h-full bg-gradient-to-br from-white to-gray-50 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="flex flex-col h-full">
+                        {/* Stars */}
+                        <div className="flex mb-6">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                          ))}
+                        </div>
+                        
+                        {/* Quote */}
+                        <blockquote className="text-lg text-foreground leading-relaxed mb-8 flex-grow">
+                          "{testimonial.quote}"
+                        </blockquote>
+                        
+                        {/* Author */}
+                        <div className="flex items-center">
+                          <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-semibold text-lg mr-4">
+                            {testimonial.author.split(' ').map(n => n[0]).join('')}
+                          </div>
+                          <div>
+                            <div className="font-semibold text-foreground">
+                              {testimonial.author}
+                            </div>
+                            <div className="text-muted-foreground">
+                              {testimonial.role} at {testimonial.company}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 lg:-left-12" />
+            <CarouselNext className="right-4 lg:-right-12" />
+          </Carousel>
         </div>
       </section>
 
