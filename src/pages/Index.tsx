@@ -592,14 +592,15 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5">
+                <CarouselItem key={index} className="md:basis-4/5 lg:basis-4/5">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={testimonialsInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="p-1"
                   >
                     <Card className="p-8 h-full bg-gradient-to-br from-white to-gray-50 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="flex flex-col h-full">
@@ -611,20 +612,20 @@ const Index = () => {
                         </div>
                         
                         {/* Quote */}
-                        <blockquote className="text-lg text-foreground leading-relaxed mb-8 flex-grow">
+                        <blockquote className="text-lg text-gray-700 leading-relaxed mb-8 flex-grow">
                           "{testimonial.quote}"
                         </blockquote>
                         
                         {/* Author */}
                         <div className="flex items-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-semibold text-lg mr-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg mr-4">
                             {testimonial.author.split(' ').map(n => n[0]).join('')}
                           </div>
                           <div>
-                            <div className="font-semibold text-foreground">
+                            <div className="font-semibold text-gray-900">
                               {testimonial.author}
                             </div>
-                            <div className="text-muted-foreground">
+                            <div className="text-gray-600">
                               {testimonial.role} at {testimonial.company}
                             </div>
                           </div>
@@ -635,8 +636,8 @@ const Index = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-4 lg:-left-12" />
-            <CarouselNext className="right-4 lg:-right-12" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
       </section>
