@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -28,6 +28,30 @@ import partnershipImage from "@/assets/partnership.jpg";
 import globalNetworkImage from "@/assets/global-network.jpg";
 import womanWorkingImage from "@/assets/woman-working.jpg";
 import digitalContractsImage from "@/assets/digital-contracts.jpg";
+
+const testimonials = [
+  {
+    quote: "We can now manage our global contractors effortlessly. The compliance automation saves us countless hours each month.",
+    author: "Sarah Johnson",
+    role: "HR Director",
+    company: "TechCorp",
+    rating: 5
+  },
+  {
+    quote: "The platform's ease of use and comprehensive compliance features make it indispensable for our international operations.",
+    author: "Michael Chen",
+    role: "Operations Manager", 
+    company: "GlobalStart",
+    rating: 5
+  },
+  {
+    quote: "Outstanding support team and seamless payment processing. Our contractors love the quick, reliable payments.",
+    author: "Emily Davis",
+    role: "Finance Lead",
+    company: "InnovateLab",
+    rating: 5
+  },
+];
 
 const Index = () => {
   // Force refresh
@@ -453,137 +477,11 @@ const Index = () => {
 
 
 
-      {/* Image Section with Stats */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="aspect-square rounded-3xl overflow-hidden relative shadow-card">
-                <img 
-                  src={partnershipImage} 
-                  alt="Professional business partnership and global collaboration"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20"></div>
-                <div className="absolute bottom-6 left-6 right-6 text-center">
-                  <div className="bg-white/90 backdrop-blur-lg rounded-2xl p-4">
-                    <div className="flex items-center justify-center mb-2">
-                      <Briefcase className="w-8 h-8 text-primary mr-2" />
-                      <span className="text-lg font-bold text-foreground">Professional Partnership</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm">Expert support at every step</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Global contractor hiring made easy with automated compliance
-              </h3>
-              <p className="text-muted-foreground mb-8 text-lg">
-                Our platform simplifies the complex process of hiring international contractors while ensuring full compliance with local regulations.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient mb-2">20%</div>
-                  <div className="text-muted-foreground">Cost reduction</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient mb-2">80%</div>
-                  <div className="text-muted-foreground">Time saved</div>
-                </div>
-              </div>
-              
-              <Button className="gradient-primary text-white border-0 shadow-primary hover:shadow-glow transition-smooth">
-                Learn more
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials */}
-      <section id="testimonials" ref={testimonialsRef} className="py-20 gradient-subtle">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={testimonialsInView ? "visible" : "hidden"}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={itemVariants} className="text-4xl lg:text-5xl font-bold text-gradient mb-6">
-              Trusted by thousands of companies worldwide
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={testimonialsInView ? "visible" : "hidden"}
-            className="grid lg:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                quote: "We can now manage our global contractors effortlessly. The compliance automation saves us countless hours each month.",
-                author: "Sarah Johnson",
-                role: "HR Director",
-                company: "TechCorp",
-                rating: 5
-              },
-              {
-                quote: "The platform's ease of use and comprehensive compliance features make it indispensable for our international operations.",
-                author: "Michael Chen",
-                role: "Operations Manager", 
-                company: "GlobalStart",
-                rating: 5
-              },
-              {
-                quote: "Outstanding support team and seamless payment processing. Our contractors love the quick, reliable payments.",
-                author: "Emily Davis",
-                role: "Finance Lead",
-                company: "InnovateLab",
-                rating: 5
-              }
-            ].map((testimonial, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="p-8 h-full shadow-card hover:shadow-primary transition-smooth">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-warning text-warning" />
-                    ))}
-                  </div>
-                  <blockquote className="text-muted-foreground mb-6 italic">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center mr-4">
-                      <span className="text-white font-bold">
-                        {testimonial.author.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">{testimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role} at {testimonial.company}</div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+    <section className="py-20 bg-gray-50">
+    </section>
 
       {/* Benefits Section */}
       <section id="benefits" ref={benefitsRef} className="py-20 bg-white">
