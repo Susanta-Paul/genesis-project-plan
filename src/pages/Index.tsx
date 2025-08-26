@@ -180,100 +180,20 @@ const Index = () => {
 
       {/* Payment section */}
       <ContractorPaymentsSection/>
+      <div className="w-full overflow-hidden">
+        <svg
+          className="w-full text-blue-400"
+          viewBox="0 0 1620 128"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M1620 0V53.3465L1528.65 79.1847C1518.92 81.9385 1508.89 83.5464 1498.79 83.9757L473.53 127.51C465.858 127.836 458.173 127.482 450.564 126.451L0 65.4176V0H1620Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
 
-      {/* Benefits Section */}
-      <section id="benefits" ref={benefitsRef} className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={benefitsInView ? "visible" : "hidden"}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={itemVariants} className="text-4xl lg:text-5xl font-bold text-gradient mb-6">
-              Seamlessly onboard contractors & manage payments in one platform
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={benefitsInView ? "visible" : "hidden"}
-            className="grid lg:grid-cols-2 gap-16 items-center"
-          >
-            <div>
-              <motion.h3 variants={itemVariants} className="text-3xl font-bold text-foreground mb-6">
-                Simplify contractor payroll
-              </motion.h3>
-              <motion.p variants={itemVariants} className="text-muted-foreground mb-8 text-lg">
-                Streamline your entire contractor payment process with automated tax calculations, currency conversions, and compliance checks.
-              </motion.p>
-              
-              <motion.div variants={itemVariants} className="space-y-4 mb-8">
-                {[
-                  "Automated tax and compliance calculations",
-                  "Multi-currency payment processing",
-                  "Real-time payment tracking",
-                  "Integrated invoice management"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-center">
-                    <CheckCircle className="w-6 h-6 text-success mr-3" />
-                    <span className="text-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </motion.div>
-              
-              <motion.div variants={itemVariants}>
-                <Button className="gradient-primary text-white border-0 shadow-primary hover:shadow-glow transition-smooth">
-                  Start free trial
-                </Button>
-              </motion.div>
-            </div>
-
-            <motion.div
-              variants={itemVariants}
-              className="relative"
-            >
-              <div className="aspect-square rounded-3xl overflow-hidden relative shadow-card">
-                <img 
-                  src={dashboardImage} 
-                  alt="Modern payment dashboard interface with compliance metrics"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent"></div>
-                <div className="absolute top-6 left-6 right-6">
-                  <div className="bg-white/90 backdrop-blur-lg rounded-xl p-4 mb-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <BarChart3 className="w-6 h-6 text-primary mr-2" />
-                        <span className="font-semibold text-foreground">Analytics</span>
-                      </div>
-                      <Badge variant="secondary" className="bg-success/20 text-success">Live</Badge>
-                    </div>
-                  </div>
-                  <div className="bg-white/90 backdrop-blur-lg rounded-xl p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <TrendingUp className="w-6 h-6 text-accent mr-2" />
-                        <span className="font-semibold text-foreground">Growth</span>
-                      </div>
-                      <Badge variant="secondary" className="bg-accent/20 text-accent">+24%</Badge>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-6 left-6 right-6 text-center">
-                  <div className="bg-white/90 backdrop-blur-lg rounded-xl p-3">
-                    <div className="text-foreground font-semibold">Complete Payment Dashboard</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <Testimonials/>
 
       {/* Final CTA Section */}
       <section className="py-20 gradient-hero">

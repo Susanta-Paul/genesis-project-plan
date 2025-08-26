@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FeatureCards from "./PaymentFeatures";
+import Testimonials from "./Testimonials";
 
 const textVariant = {
   hidden: { opacity: 0, y: 20 },
@@ -146,6 +147,7 @@ const ContractorPaymentsSection: React.FC = () => {
         </div>
       </div>
       <FeatureCards/>
+      <Testimonials/>
     </section>
   );
 };
