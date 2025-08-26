@@ -3,138 +3,14 @@ import Stats from "@/sections/Stats";
 import Features from "@/sections/Features";
 import Testimonials from "@/sections/Testimonials";
 import ContractorPaymentsSection from "@/sections/ContractorPaymentsSection";
-
-
-
-
-import { motion, useInView, useAnimation } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import GlobalHRIS from "@/sections/GlobalHris";
+import FAQAccordion from "@/sections/FAQAccordion";
+import {motion} from "framer-motion"
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Tilt from "react-parallax-tilt";
-import CountUp from 'react-countup';
-import { 
-  Globe, 
-  Shield, 
-  Users, 
-  CheckCircle, 
-  Star, 
-  Clock, 
-  BarChart3, 
-  DollarSign,
-  FileText,
-  Briefcase,
-  TrendingUp,
-  Award
-} from "lucide-react";
 
-// Import images
-import heroTeamImage from "@/assets/hero-team.jpg";
-import dashboardImage from "@/assets/dashboard.jpg";
-import partnershipImage from "@/assets/partnership.jpg";
-import globalNetworkImage from "@/assets/global-network.jpg";
-import womanWorkingImage from "@/assets/woman-working.jpg";
-import digitalContractsImage from "@/assets/digital-contracts.jpg";
 
-const testimonials = [
-  {
-    quote: "We can now manage our global contractors effortlessly. The compliance automation saves us countless hours each month.",
-    author: "Sarah Johnson",
-    role: "HR Director",
-    company: "TechCorp",
-    rating: 5
-  },
-  {
-    quote: "The platform's ease of use and comprehensive compliance features make it indispensable for our international operations.",
-    author: "Michael Chen",
-    role: "Operations Manager", 
-    company: "GlobalStart",
-    rating: 5
-  },
-  {
-    quote: "Outstanding support team and seamless payment processing. Our contractors love the quick, reliable payments.",
-    author: "Emily Davis",
-    role: "Finance Lead",
-    company: "InnovateLab",
-    rating: 5
-  },
-];
 
 const Index = () => {
-  // Force refresh
-  const heroRef = useRef(null);
-  const statsRef = useRef(null);
-  const featuresRef = useRef(null);
-  const testimonialsRef = useRef(null);
-  const benefitsRef = useRef(null);
-
-  const heroInView = useInView(heroRef, { once: true });
-  const statsInView = useInView(statsRef, { once: true });
-  const featuresInView = useInView(featuresRef, { once: true });
-  const testimonialsInView = useInView(testimonialsRef, { once: true });
-  const benefitsInView = useInView(benefitsRef, { once: true });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-  
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-  
-    const digitalContractsImage = "https://www.anitian.com/wp-content/uploads/2019/05/What-is-Compliance-Automation-Anitian.png?w=900"
-    const globalNetworkImage = "https://www.itedgenews.africa/wp-content/uploads/2021/12/seamless-payment.jpg"
-    const womanWorkingImage = "https://www.builtintelligence.com/cdn/shop/articles/Contract_Management_Software_c01187db-8a41-4a48-9e25-fd4ee32cdbc1.jpg?v=1747830744"
-  
-  const features = [
-  {
-    icon: Shield,
-    title: "Automated Compliance",
-    description: "Stay compliant with local tax laws and regulations in 150+ countries automatically.",
-    stats: "99.9% compliance rate",
-    image: digitalContractsImage,
-  },
-  {
-    icon: DollarSign,
-    title: "Seamless Payments",
-    description: "Pay contractors in their preferred currency with competitive exchange rates.",
-    stats: "50+ currencies",
-    image: globalNetworkImage,
-  },
-  {
-    icon: FileText,
-    title: "Contract Management",
-    description: "Create, manage, and store contracts with built-in legal templates.",
-    stats: "Legal templates included",
-    image: womanWorkingImage,
-  },
-];
-
-
-  const [startCount, setStartCount] = useState(false);
-  const accentFrom = "from-blue-500";
-  const accentTo = "to-blue-600";
-
-  // Trigger count-up only when section is in view
-  useEffect(() => {
-    if (statsInView) setStartCount(true);
-  }, [statsInView]);
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#FFFBF4] ">
@@ -195,51 +71,9 @@ const Index = () => {
       </div>
 
 
-      {/* Final CTA Section */}
-      <section className="py-20 gradient-hero">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Reduce HR costs & save 150+ hours on compliance
-            </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Join thousands of companies already simplifying their contractor payments
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button 
-                size="lg" 
-                className="bg-white text-primary hover:bg-white/90 shadow-glow transition-smooth text-lg px-8"
-              >
-                Book a demo
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white/10 transition-smooth text-lg px-8"
-              >
-                Start free trial
-              </Button>
-            </div>
+      <GlobalHRIS/>
 
-            <div className="flex items-center justify-center space-x-8 text-white/80">
-              <div className="flex items-center">
-                <Award className="w-5 h-5 mr-2" />
-                <span>SOC 2 Certified</span>
-              </div>
-              <div className="flex items-center">
-                <Shield className="w-5 h-5 mr-2" />
-                <span>Bank-level Security</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <FAQAccordion/>
 
       {/* Footer */}
       <footer className="py-12 bg-foreground text-white">

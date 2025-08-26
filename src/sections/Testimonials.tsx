@@ -32,7 +32,7 @@ export default function Testimonials() {
 
   return (
     <section ref={testimonialsRef} className="bg-blue-400 text-white py-20 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div id="testimonials" className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
